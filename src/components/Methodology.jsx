@@ -25,7 +25,20 @@ export default function Methodology() {
   ];
 
   return (
-    <section id="methode" className="py-24 md:py-32 bg-brand-slate border-t border-white/5 relative">
+    <section id="methode" className="py-24 md:py-32 bg-brand-slate border-t border-white/5 relative overflow-hidden">
+      
+      {/* IMAGE DE FOND PERSONNALISÉE (pedologie.jpg - Opacité 15%) */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <img
+          src="/Images/pedologie.jpg"
+          alt="Étude pédologique des sols en arrière-plan"
+          className="w-full h-full object-cover opacity-15"
+        />
+        {/* Dégradés d'ambiance sombres */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-slate/40 via-brand-slate/90 to-brand-slate" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,#121614_95%)]" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Titre de section */}
@@ -43,7 +56,7 @@ export default function Methodology() {
           {steps.map((step, index) => (
             <div 
               key={index} 
-              className="relative bg-brand-slatelight/20 border border-white/5 p-8 rounded-lg min-h-[260px] hover:border-brand-accent/20 transition-all duration-300 group"
+              className="relative bg-brand-slatelight/20 backdrop-blur-sm border border-white/5 p-8 rounded-lg min-h-[260px] hover:border-brand-accent/20 transition-all duration-300 group"
             >
               {/* Grand Numéro aligné en haut */}
               <span className="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-accent/20 group-hover:text-brand-accent/40 transition-colors duration-300 block mb-4">

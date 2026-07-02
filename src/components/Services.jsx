@@ -28,7 +28,20 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-brand-slate relative">
+    <section id="services" className="py-24 md:py-32 bg-brand-slate relative overflow-hidden">
+      
+      {/* IMAGE DE FOND PERSONNALISÉE (arpentage.jpg - Opacité 15%) */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <img
+          src="/Images/arpentage.jpg"
+          alt="Arpentage et viticulture de précision en arrière-plan"
+          className="w-full h-full object-cover opacity-35"
+        />
+        {/* Dégradés d'ambiance sombres */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-slate/40 via-brand-slate/90 to-brand-slate" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,#121614_95%)]" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* En-tête de section */}
@@ -53,7 +66,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-brand-slatelight/30 border border-white/5 p-8 rounded-lg flex flex-col justify-between hover:border-brand-accent/20 transition-all duration-300 group"
+              className="bg-brand-slatelight/30 backdrop-blur-sm border border-white/5 p-8 rounded-lg flex flex-col justify-between hover:border-brand-accent/20 transition-all duration-300 group"
             >
               <div className="space-y-6">
                 <div className="w-12 h-12 bg-brand-slate rounded border border-white/10 flex items-center justify-center group-hover:border-brand-accent/30 group-hover:bg-brand-green/10 transition-all duration-300">
@@ -97,7 +110,7 @@ export default function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="bg-brand-slatelight/20 border border-brand-accent/20 rounded-xl p-8 md:p-12 text-center max-w-4xl mx-auto relative overflow-hidden"
+          className="bg-brand-slatelight/20 backdrop-blur-sm border border-brand-accent/20 rounded-xl p-8 md:p-12 text-center max-w-4xl mx-auto relative overflow-hidden"
         >
           {/* Ornement lumineux arrière plan */}
           <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-brand-green/10 rounded-full filter blur-[80px] pointer-events-none" />

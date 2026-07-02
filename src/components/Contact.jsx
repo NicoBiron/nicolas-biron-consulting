@@ -49,7 +49,20 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-brand-slate border-t border-white/5 relative">
+    <section id="contact" className="py-24 md:py-32 bg-brand-slate border-t border-white/5 relative overflow-hidden">
+      
+      {/* IMAGE DE FOND PERSONNALISÉE (contact.jpg - Opacité 15%) */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <img
+          src="/Images/contact.jpg"
+          alt="Atmosphère de chai ou de vignoble en arrière-plan"
+          className="w-full h-full object-cover opacity-15"
+        />
+        {/* Dégradés d'ambiance sombres */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-slate/40 via-brand-slate/90 to-brand-slate" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,#121614_95%)]" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
@@ -122,7 +135,7 @@ export default function Contact() {
           </div>
 
           {/* Colonne Droite : Formulaire */}
-          <div className="lg:col-span-7 bg-brand-slatelight/20 border border-white/5 p-8 md:p-12 rounded-xl">
+          <div className="lg:col-span-7 bg-brand-slatelight/20 backdrop-blur-sm border border-white/5 p-8 md:p-12 rounded-xl">
             <form onSubmit={handleSubmit} className="space-y-8">
               
               <div className="space-y-2">
@@ -238,7 +251,7 @@ export default function Contact() {
             <div className="font-sans text-xs md:text-sm text-brand-ivory/70 leading-relaxed space-y-4">
               <p><strong>Éditeur du site :</strong><br />Nicolas Biron, Consultant indépendant.<br />Contact direct : <a href="mailto:nicolas.biron.pro@gmail.com" className="text-brand-accent underline">nicolas.biron.pro@gmail.com</a></p>
               <p><strong>Hébergeur :</strong><br />Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA.<br />Site officiel : vercel.com</p>
-              <p><strong>Propriété intellectuelle :</strong><br />L'ensemble des contenus présents sur ce site (textes, graphismes, logos, codes sources) est la propriété exclusive de Nicolas Biron, sauf mention contraire explicite. Toute reproduction partielle ou totale sans autorisation écrite préalable est strictement interdite.</p>
+              <p><strong>Propriété intellectuelle :</strong><br />L'ensemble des contenus présents sur ce site (textes, graphismes, logos, codes sources) is la propriété exclusive de Nicolas Biron, sauf mention contraire explicite. Toute reproduction partielle ou totale sans autorisation écrite préalable est strictement interdite.</p>
               <p><strong>Responsabilité :</strong><br />Les informations diffusées sur ce site sont fournies à titre indicatif. Nicolas Biron s'efforce de maintenir des données fiables mais ne saurait garantir l'exactitude absolue des conseils ou modélisations présentés, chaque domaine viticole ayant ses spécificités propres.</p>
             </div>
           </div>
