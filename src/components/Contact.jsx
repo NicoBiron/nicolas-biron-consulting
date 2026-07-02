@@ -5,6 +5,9 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  // État pour basculer entre le Formulaire et Calendly
+  const [activeTab, setActiveTab] = useState('form'); // 'form' ou 'calendly'
+
   // États pour contrôler l'affichage des deux modales de pied de page
   const [showLegal, setShowLegal] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
@@ -134,73 +137,114 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Colonne Droite : Formulaire */}
+          {/* Colonne Droite : Sélecteur d'Onglets + Formulaire / Calendly */}
           <div className="lg:col-span-7 bg-brand-slatelight/20 backdrop-blur-sm border border-white/5 p-8 md:p-12 rounded-xl">
-            <form onSubmit={handleSubmit} className="space-y-8">
-              
-              <div className="space-y-2">
-                <label className="block text-[10px] uppercase tracking-widest text-brand-ivory/40 font-sans">
-                  Votre nom complet
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formState.name}
-                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
-                  placeholder="Jean Dupont"
-                  className="w-full bg-transparent border-b border-white/10 focus:border-brand-accent focus:outline-none py-3 text-sm transition-colors duration-300 placeholder:text-brand-ivory/20"
+            
+            {/* Boutons de sélection d'onglets épurés */}
+            <div className="flex border border-white/10 rounded-lg p-1 bg-brand-slate/50 mb-8 max-w-xs mx-auto">
+              <button 
+                type="button"
+                onClick={() => setActiveTab('form')}
+                className={`flex-1 text-center py-2 text-[10px] tracking-widest uppercase rounded-md font-sans transition-all duration-300 ${
+                  activeTab === 'form' 
+                    ? 'bg-brand-accent text-brand-slate font-semibold' 
+                    : 'text-brand-ivory/60 hover:text-brand-ivory'
+                }`}
+              >
+                Formulaire
+              </button>
+              <button 
+                type="button"
+                onClick={() => setActiveTab('calendly')}
+                className={`flex-1 text-center py-2 text-[10px] tracking-widest uppercase rounded-md font-sans transition-all duration-300 ${
+                  activeTab === 'calendly' 
+                    ? 'bg-brand-accent text-brand-slate font-semibold' 
+                    : 'text-brand-ivory/60 hover:text-brand-ivory'
+                }`}
+              >
+                Prendre RDV
+              </button>
+            </div>
+
+            {/* Affichage conditionnel selon l'onglet actif */}
+            {activeTab === 'form' ? (
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="space-y-2">
+                  <label className="block text-[10px] uppercase tracking-widest text-brand-ivory/40 font-sans">
+                    Votre nom complet
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={formState.name}
+                    onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                    placeholder="Jean Dupont"
+                    className="w-full bg-transparent border-b border-white/10 focus:border-brand-accent focus:outline-none py-3 text-sm transition-colors duration-300 placeholder:text-brand-ivory/20"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-[10px] uppercase tracking-widest text-brand-ivory/40 font-sans">
+                    Votre adresse email
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={formState.email}
+                    onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                    placeholder="jean.dupont@domaine.com"
+                    className="w-full bg-transparent border-b border-white/10 focus:border-brand-accent focus:outline-none py-3 text-sm transition-colors duration-300 placeholder:text-brand-ivory/20"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-[10px] uppercase tracking-widest text-brand-ivory/40 font-sans">
+                    Votre message
+                  </label>
+                  <textarea
+                    required
+                    rows={4}
+                    value={formState.message}
+                    onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                    placeholder="Décrivez brièvement vos enjeux..."
+                    className="w-full bg-transparent border-b border-white/10 focus:border-brand-accent focus:outline-none py-3 text-sm transition-colors duration-300 placeholder:text-brand-ivory/20 resize-none"
+                  />
+                </div>
+
+                <div className="pt-4">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full inline-flex items-center justify-center space-x-3 bg-brand-green hover:bg-brand-greenlight text-brand-ivory font-sans font-semibold text-xs tracking-widest uppercase px-6 py-4 rounded transition-all duration-300 focus:outline-none cursor-pointer"
+                  >
+                    {isSubmitted ? (
+                      <span className="text-brand-accent font-semibold tracking-widest">Message envoyé avec succès</span>
+                    ) : (
+                      <span className="flex items-center space-x-2">
+                        <span>{isSubmitting ? "Envoi en cours..." : "Envoyer la demande"}</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-2">
+                          <line x1="22" y1="2" x2="11" y2="13"/>
+                          <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                      </span>
+                    )}
+                  </button>
+                </div>
+              </form>
+            ) : (
+              /* Widget Calendly Intégré (Iframe épurée) */
+              <div className="w-full h-[450px] rounded-lg overflow-hidden border border-white/10 bg-brand-slate/40 relative">
+                <iframe 
+                  src="https://calendly.com/nicolas-biron-pro?embed_domain=nicolas-biron-consulting.vercel.app&embed_type=Inline"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  title="Calendly Nicolas Biron"
+                  className="w-full h-full"
                 />
               </div>
+            )}
 
-              <div className="space-y-2">
-                <label className="block text-[10px] uppercase tracking-widest text-brand-ivory/40 font-sans">
-                  Votre adresse email
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={formState.email}
-                  onChange={(e) => setFormState({ ...formState, email: e.target.value })}
-                  placeholder="jean.dupont@domaine.com"
-                  className="w-full bg-transparent border-b border-white/10 focus:border-brand-accent focus:outline-none py-3 text-sm transition-colors duration-300 placeholder:text-brand-ivory/20"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <label className="block text-[10px] uppercase tracking-widest text-brand-ivory/40 font-sans">
-                  Votre message
-                </label>
-                <textarea
-                  required
-                  rows={4}
-                  value={formState.message}
-                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
-                  placeholder="Décrivez brièvement vos enjeux..."
-                  className="w-full bg-transparent border-b border-white/10 focus:border-brand-accent focus:outline-none py-3 text-sm transition-colors duration-300 placeholder:text-brand-ivory/20 resize-none"
-                />
-              </div>
-
-              <div className="pt-4">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center space-x-3 bg-brand-green hover:bg-brand-greenlight text-brand-ivory font-sans font-semibold text-xs tracking-widest uppercase px-6 py-4 rounded transition-all duration-300 focus:outline-none cursor-pointer"
-                >
-                  {isSubmitted ? (
-                    <span className="text-brand-accent font-semibold tracking-widest">Message envoyé avec succès</span>
-                  ) : (
-                    <span className="flex items-center space-x-2">
-                      <span>{isSubmitting ? "Envoi en cours..." : "Envoyer la demande"}</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 ml-2">
-                        <line x1="22" y1="2" x2="11" y2="13"/>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                      </svg>
-                    </span>
-                  )}
-                </button>
-              </div>
-
-            </form>
           </div>
 
         </div>
