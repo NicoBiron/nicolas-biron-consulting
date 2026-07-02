@@ -7,17 +7,17 @@ export default function About() {
     {
       icon: <Sprout className="w-6 h-6 text-brand-accent" />,
       title: "Agronomie de Précision",
-      description: "Optimisation de la conduite du vignoble par l'analyse des sols, le suivi micro-climatique et l'intégration de technologies d'imagerie et de capteurs."
+      description: "Optimisation de la conduite du vignoble par la refonte complète de la carte des sols, le suivi micro-climatique (des sondes locales aux modèles à maille large) et l'intégration de technologies d'imagerie et capteurs pour alimenter une stratégie de pilotage pragmatisée."
     },
     {
       icon: <TrendingUp className="w-6 h-6 text-brand-accent" />,
       title: "Finance & Stratégie Viticole",
-      description: "Analyse fine des coûts de revient, planification financière stratégique et pilotage de la rentabilité opérationnelle des structures vitivinicoles."
+      description: "A la recherche du levier opérationnelle : analyse fine des coûts de revient, planification financière stratégique et pilotage de la rentabilité opérationnelle des structures vitivinicoles."
     },
     {
       icon: <Wine className="w-6 h-6 text-brand-accent" />,
-      title: "Science Œnologique",
-      description: "Valorisation maximale du potentiel de chaque parcelle pour guider les choix de vinification en parfaite adéquation avec les attentes des marchés haut de gamme."
+      title: "Science Œnologique & Consommation des vins",
+      description: "Explorer les différentes pistes de solutions pour vendre la production dans un contexte défavorable. Valorisation maximale du potentiel de chaque parcelle pour guider les choix de vinification en parfaite adéquation avec les attentes des marchés."
     }
   ];
 
@@ -50,13 +50,13 @@ export default function About() {
             className="lg:col-span-5 space-y-6"
           >
             <p className="font-serif text-lg md:text-xl text-brand-ivory/90 leading-relaxed italic border-l-2 border-brand-accent/50 pl-6">
-              "La viticulture moderne impose de briser les silos entre la terre, la cave et les équilibres financiers."
+              "Pour qu’un grand terroir traverse la crise, le domaine doit d'abord respirer financièrement. L'excellence commence au creux du cep, se révèle dans le secret du chai, et se sécurise dans la rigueur des comptes."
             </p>
             <p className="font-sans text-sm md:text-base text-brand-ivory/60 leading-relaxed space-y-4">
-              En tant que consultant indépendant, j'accompagne les domaines et les investisseurs dans la transformation technique et économique de leurs exploitations. 
+              Ingénieur agronome et œnologue (DNO), je conseille les propriétés et les investisseurs dans la transformation technique et économique de leurs exploitations. Fort de dix ans d'expérience de terrain sur des postes de direction technique et d’encadrement au sein de quatre structures aux terroirs et problématiques radicalement différents, j'allie l'agilité opérationnelle à la hauteur de vue du pilotage stratégique. 
             </p>
             <p className="font-sans text-sm md:text-base text-brand-ivory/60 leading-relaxed">
-              Mon travail consiste à unifier l'observation agronomique rigoureuse, l'utilisation de données de précision et la maîtrise des modèles financiers pour pérenniser et valoriser vos actifs viticoles face aux défis climatiques et économiques actuels.
+              Mon travail consiste à unifier l'observation agronomique méticuleuse, l'exigence de la vinification au chai et la rigueur des modèles financiers. C'est en croisant cette réalité de terrain et cette vision macro-économique que nous pérennisons et valorisons vos actifs viticoles face aux défis climatiques et financiers actuels. 
             </p>
           </motion.div>
 

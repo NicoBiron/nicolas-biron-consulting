@@ -8,22 +8,22 @@ export default function Services() {
       icon: <Compass className="w-6 h-6 text-brand-accent" />,
       title: "Pilotage Agro-Technique & Précision",
       subtitle: "Sécuriser la vigne par la donnée",
-      description: "Mise en place de capteurs connectés et outils de modélisation pour surveiller vos parcelles en temps réel. Aide à la décision opérationnelle pour faire face au gel, à la sécheresse et optimiser les traitements.",
-      deliverables: ["Cartographie thermique parcellaire", "Sondes capacitives & suivi hydrique", "Planification de lutte antigel passive"]
+      description: "Refonte de la stratégie viticole de précision : mise en place de capteurs connectés et outils de modélisation pour surveiller vos parcelles en temps réel. Aide à la décision opérationnelle pour faire face au gel, à la sécheresse et optimiser les temps passés/consommables.",
+      deliverables: ["Carte pédologique et thermique intra-parcellaire", "Sondes capacitives & suivi hydrique", "Pragmatisation des itinéraires viti en intra-parcellaire"]
     },
     {
       icon: <BarChart3 className="w-6 h-6 text-brand-accent" />,
       title: "Stratégie Financière de Crise",
       subtitle: "Restaurer la rentabilité",
-      description: "Analyse chirurgicale des coûts de revient par bouteille et par parcelle pour identifier les leviers d'économies immédiats. Aide à la restructuration financière et audit stratégique d'investissement.",
-      deliverables: ["Calcul des coûts de revient réels", "Scénarios budgétaires à 3 et 5 ans", "Dossier de restructuration & audit de dette"]
+      description: "Analyse chirurgicale des coûts de revient par bouteille et par parcelle pour identifier les leviers d'économies immédiats. Aide à la restructuration financière et audit stratégique d'investissement pour pérenniser l'exploitation et son retour sur investissement.",
+      deliverables: ["Calcul des coûts de revient réels parcellaires", "Scénarios budgétaires à 3 et 5 ans", "Audit et dossier de restructuration"]
     },
     {
       icon: <Layers className="w-6 h-6 text-brand-accent" />,
       title: "Accompagnement Transition & Valeur",
       subtitle: "Valoriser l'impact environnemental",
-      description: "Conseil en encépagement d'avenir face au réchauffement et structuration d'une démarche de décarbonation complète. Valorisation de vos engagements auprès des réseaux de distribution.",
-      deliverables: ["Plan de restructuration d'encépagement", "Bilan carbone amont/aval", "Valorisation marketing du terroir"]
+      description: "Conseil en encépagement d'avenir face au réchauffement climatique. Structuration d'une démarche de décarbonation et d'intégration environnementale. Valorisation de vos engagements auprès des réseaux de distribution.",
+      deliverables: ["Plan de restructuration du vignoble", "Elaboration de nouvelles cuvées", "Valorisation marketing du terroir"]
     }
   ];
 
@@ -103,13 +103,13 @@ export default function Services() {
           <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-brand-green/10 rounded-full filter blur-[80px] pointer-events-none" />
 
           <span className="inline-flex items-center px-2.5 py-1 rounded bg-brand-accent/10 border border-brand-accent/30 text-[10px] tracking-widest text-brand-accent uppercase font-sans font-semibold mb-4">
-            Plateforme Collaborative BNV Consulting
+            Plateforme  BNV Consulting
           </span>
           <h3 className="font-serif text-2xl md:text-3xl text-brand-ivory font-semibold mb-4 leading-tight">
-            Accéder à mes outils & ressources partagés
+            Accéder au descriptif des services de viticulture de précision, de mes outils & ressources partagés
           </h3>
           <p className="font-sans text-xs md:text-sm text-brand-ivory/60 max-w-2xl mx-auto mb-8 leading-relaxed">
-            Pour mes clients partenaires, j'ai développé une plateforme dédiée regroupant notre outil de pilotage financier, nos alertes agro-climatiques géolocalisées et ma banque de prompts IA spécialisés.
+            Pour mes clients partenaires, une plateforme dédiée est en cours de développement regroupant notre outil de pilotage financier, nos solutions de viticulture de précision et ma banque de prompts IA spécialisés.
           </p>
           
           <a

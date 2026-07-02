@@ -12,23 +12,23 @@ export default function Problems() {
       title: "Crise de la Demande & Stratégie Valeur",
       tagline: "Sortir de la guerre des volumes par le marketing d'impact.",
       reality: "La déconsommation structurelle (notamment sur le rouge) et la saturation des marchés exports traditionnels étranglent les exploitations de milieu de gamme. Bordeaux subit de plein fouet cette perte de vitesse.",
-      solution: "J'accompagne les domaines dans le repositionnement stratégique : valorisation environnementale objective, transition vers des profils de vins plus agiles, et structuration d'une offre axée sur la rareté et l'impact carbone certifié pour capter de la valeur."
+      solution: "J'accompagne les domaines dans le repositionnement stratégique : valorisation environnementale objective, transition vers des profils de vins plus agiles ou création de nouvelles cuvées, et restructuration d'une offre axée sur une adéquation forte avec le marché et le retour financier de vos vins."
     },
     {
       id: 2,
       icon: <CloudLightning className="w-5 h-5 text-brand-accent" />,
       title: "Choc Climatique & Urgence Agronomique",
       tagline: "Sécuriser le rendement face à l'imprévisibilité du ciel.",
-      reality: "En 2026, les gels tardifs, les grêles et le stress hydrique ne sont plus des exceptions. La gestion de l'eau et des contraintes réglementaires sur l'irrigation met en péril les vignobles les plus fragiles.",
-      solution: "Déploiement d'outils d'aide à la décision (OAD) agrométéorologiques. Analyse thermique par capteurs, pose de sondes capacitives pour piloter le stress hydrique au plus juste et préconisations de tailles tardives pour esquiver les gels."
+      reality: "Depuis plusieurs années le vigneron passe à la caisse climatique : gels tardifs (2017, 2021, 2022), grosses grêles (2022, 2023, 2024) et stress hydriques majeurs (2022, 2025, 2026) ne sont plus des exceptions. S'adapter devient une question de survie.",
+      solution: "Profiter de la disruption technologique actuelle : accompagner le vigneron dans un pilotage fin par IA, mapping cartographique poussé du vignoble avec déploiement d'outils d'aide à la décision (OAD) agrométéorologiques. Analyse thermique par capteurs, pose de sondes capacitives pour piloter le stress hydrique au plus juste (travaux de sols, apports ferti) et pilotage intra-parcellaire dans la gestion des gels tardifs."
     },
     {
       id: 3,
       icon: <Coins className="w-5 h-5 text-brand-accent" />,
       title: "Pression Financière & Coûts de Revient",
       tagline: "Briser l'effet de ciseaux pour préserver les marges.",
-      reality: "L'inflation des intrants (matières sèches, énergie, verre) cumulée à un foncier historiquement surévalué asphyxie les trésoreries. L'endettement bloque la transmission ou la restructuration.",
-      solution: "Audits de rentabilité analytique fine. Je calcule vos coûts de revient réels par parcelle et par bouteille. Nous mettons en place des plans d'optimisation financière prédictifs et vous accompagnons dans la restructuration de dette."
+      reality: "L'inflation des salaires et des intrants (matières sèches, énergie, matières sèches) cumulée à un foncier historiquement surévalué asphyxie les trésoreries. L'endettement bloque la transmission ou la restructuration.",
+      solution: "Audits de rentabilité analytique fine à la parcelle ou à l'unité de terroir. Ensemble, nous calculons vos coûts de revient réels par parcelle, par cuvée et par bouteille. Nous mettons en place des plans d'optimisation financière prédictifs à moyen-long terme et vous accompagnons dans la restructuration technico-financière de l'exploitation."
     },
     {
       id: 4,
@@ -36,14 +36,14 @@ export default function Problems() {
       title: "Transition Écologique & Matériel Végétal",
       tagline: "Anticiper l'encépagement et décarboner les process.",
       reality: "La réduction drastique des intrants chimiques et l'exigence d'allègement du bilan carbone (poids du verre, logistique) sont incontournables. Mais adapter son matériel végétal s'inscrit sur un temps long.",
-      solution: "Planification stratégique de l'encépagement de demain (sélection massale, étude de cépages hybrides résistants ou de porte-greffes tardifs). Mesure et réduction de l'empreinte carbone globale pour répondre aux exigences des acheteurs internationaux."
+      solution: "Planification stratégique de l'encépagement de demain en adéquation avec le tryptique plante - terroir - produit (sélection massale, réflexion profonde sur les cépages et porte-greffes selon les objectifs de production). Mesure et réduction de l'empreinte carbone globale pour répondre aux exigences des acheteurs internationaux."
     },
     {
       id: 5,
       icon: <Brain className="w-5 h-5 text-brand-accent" />,
       title: "IA, Transmission & Mutation Sociale",
       tagline: "Compenser le manque de main-d'œuvre par la tech.",
-      reality: "La déprise agricole, l'arrachage de vignes en friche et les difficultés critiques de recrutement menacent la transmission des domaines familiaux. Les vignerons sont débordés par la charge administrative.",
+      reality: "La déprise agricole, l'arrachage de vignes en friche et les difficultés critiques de recrutement menacent la transmission des domaines familiaux. Les vignerons sont débordés par la charge administrative et n'arrivent donc pas à prendre le virage technologique actuel.",
       solution: "J'intègre la viticulture de précision et l'IA générative dans vos processus. Je mets à disposition ma banque de prompts dédiée aux vignerons pour automatiser l'administratif, le suivi réglementaire, et libérer du temps pour les choix de terrain."
     }
   ];
@@ -68,7 +68,7 @@ export default function Problems() {
             </p>
             <div className="p-6 bg-brand-slate/50 border border-brand-accent/20 rounded-md">
               <p className="font-sans text-xs md:text-sm text-brand-accent font-medium leading-relaxed">
-                "La clé de l'adaptation en 2026 repose sur deux piliers : la rigueur de la donnée technique pour sécuriser la terre, et le pilotage analytique pour sécuriser la finance."
+                "La viabilité économique est le bouclier de votre terroir. En 2026, consolider ses marges n'est pas un renoncement, c’est l’unique chemin pour continuer à façonner de grands vins d’émotion, profondément respectueux du vivant et résilients face aux crises."
               </p>
               <span className="block text-[10px] uppercase tracking-wider text-brand-ivory/40 mt-3 font-sans">
                 — Nicolas Biron

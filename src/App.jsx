@@ -3,7 +3,9 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
 import Problems from './components/Problems';
+import Methodology from './components/Methodology'; // 1. Nouvelle importation
 import Services from './components/Services';
+import Confidentiality from './components/Confidentiality'; // 2. Nouvelle importation
 import Contact from './components/Contact';
 
 export default function App() {
@@ -23,10 +25,16 @@ export default function App() {
         {/* 3. Section Problématiques Interactives */}
         <Problems />
 
-        {/* 4. Section Prestations & Outils */}
+        {/* 4. Section Méthodologie (Nouveau) */}
+        <Methodology />
+
+        {/* 5. Section Prestations & Outils */}
         <Services />
 
-        {/* 5. Section Contact & Pied de page */}
+        {/* 6. Section Confidentialité (Nouveau) */}
+        <Confidentiality />
+
+        {/* 7. Section Contact & Pied de page */}
         <Contact />
       </main>
     </div>
