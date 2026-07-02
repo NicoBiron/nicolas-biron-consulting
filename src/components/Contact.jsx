@@ -13,22 +13,10 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Récupérez une clé gratuite sur https://web3forms.com (aucun compte requis, juste votre email)
-    // et remplacez "VOTRE_CLE_API_ICI" ci-dessous.
+    // Clé Web3Forms officielle configurée pour nicolas.biron.pro@gmail.com
     const accessKey = "c8a57edc-d6d4-4d6b-8557-ac01482ae1d0"; 
-    
-    // Mode démonstration si la clé n'est pas encore renseignée
-    if (accessKey === "c8a57edc-d6d4-4d6b-8557-ac01482ae1d0") {
-      setIsSubmitted(true);
-      setIsSubmitting(false);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormState({ name: '', email: '', message: '' });
-      }, 4000);
-      return;
-    }
 
-    // Envoi réel en production vers nicolas.biron.pro@gmail.com via l'API Web3Forms
+    // Envoi réel vers l'API Web3Forms
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -55,6 +43,7 @@ export default function Contact() {
       }
     } catch (error) {
       console.error("Erreur de soumission :", error);
+      alert("Une erreur réseau est survenue. Veuillez vérifier votre connexion.");
     }
     setIsSubmitting(false);
   };
@@ -113,7 +102,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* LinkedIn Modifié */}
+            {/* LinkedIn */}
             <div className="pt-6 border-t border-white/5 space-y-3">
               <span className="block text-[10px] uppercase tracking-wider text-brand-ivory/40 font-sans">Réseaux professionnels</span>
               <a 
