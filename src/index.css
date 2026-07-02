@@ -1,18 +1,33 @@
 @import "tailwindcss";
 
 @theme {
+  --color-brand-slate: var(--bg-primary);
+  --color-brand-slatelight: var(--bg-secondary);
+  --color-brand-ivory: var(--text-primary);
+  
+  --color-brand-accent: #c5a880; /* L'or reste identique dans les deux modes */
   --color-brand-green: #2c4a3e;
   --color-brand-greenlight: #3d6354;
-  --color-brand-slate: #121614;
-  --color-brand-slatelight: #1b211d;
-  --color-brand-accent: #c5a880;
-  --color-brand-ivory: #f4f4f0;
 
-  /* Nouvelles polices plus conviviales et chaleureuses */
   --font-serif: "Lora", serif;
   --font-sans: "Plus Jakarta Sans", sans-serif;
 }
 
+/* 1. Ambiance Chai (Sombre - Actif par défaut) */
+:root {
+  --bg-primary: #121614;
+  --bg-secondary: #1b211d;
+  --text-primary: #f4f4f0;
+}
+
+/* 2. Ambiance Vigne (Clair - Vert Sauge / Argile organique reposante) */
+html.theme-vigne {
+  --bg-primary: #C5CDC1;        /* Vert sauge mat / Argile douce (supprime l'agressivité de la lumière) */
+  --bg-secondary: #B5BEB1;     /* Sauge légèrement ombrée pour dessiner les cartes */
+  --text-primary: #141A16;     /* Vert forêt ultra-sombre pour un confort de lecture optimal */
+}
+
 body {
   overflow-x: hidden;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
