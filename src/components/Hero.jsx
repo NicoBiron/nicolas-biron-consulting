@@ -29,7 +29,7 @@ export default function Hero() {
           Nicolas Biron
         </motion.span>
 
-        {/* Titre principal corrigé pour les grands écrans (lg:text-8xl) */}
+        {/* Titre principal corrigé pour les grands écrans (lg:text-7xl) */}
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -52,15 +52,17 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="font-sans text-sm md:text-base lg:text-lg text-brand-ivory/70 max-w-2xl font-light tracking-wide leading-relaxed"
         >
-          L'alliance de l'agro-climatologie, de l'expertise oenologique et de l'optimisation financière au service de vos terroirs.
+          L'alliance de l'agro-météorologie, de l'expertise oenologique et de l'optimisation financière au service de vos terroirs.
         </motion.p>
 
+        {/* Double boutons d'actions empilés verticalement et espacés */}
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-10"
+          className="mt-10 flex flex-col items-center space-y-6"
         >
+          {/* Bouton Principal : Découvrir mon approche */}
           <a
             href="#approche"
             className="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden border border-brand-accent/50 rounded transition-all duration-300 hover:border-brand-accent bg-transparent"
@@ -68,6 +70,20 @@ export default function Hero() {
             <span className="absolute inset-0 w-full h-full bg-brand-green/20 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             <span className="relative font-sans text-xs tracking-[0.2em] uppercase text-brand-ivory group-hover:text-brand-accent transition-colors duration-300">
               Découvrir mon approche
+            </span>
+          </a>
+
+          {/* Bouton Secondaire : Appel à l'Agent IA (Nouveau) */}
+          <a
+            href="#assistant-ia"
+            className="group flex items-center space-x-2 text-[10px] tracking-[0.25em] uppercase text-brand-accent hover:text-brand-ivory transition-colors duration-300 py-1"
+          >
+            {/* Petite icône d'étincelles/innovation */}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-12">
+              <path d="M12 2a10 10 0 0 1 7.54 16.59c-.44.5-.63 1.15-.54 1.81l.3 2.14a1 1 0 0 1-1.45 1.05l-1.92-1c-.59-.3-1.28-.31-1.87-.03A10 10 0 0 1 12 22 10 10 0 0 1 12 2Z"/>
+            </svg>
+            <span className="border-b border-brand-accent/30 group-hover:border-brand-ivory transition-colors pb-0.5">
+              Tester mon jumeau numérique IA
             </span>
           </a>
         </motion.div>

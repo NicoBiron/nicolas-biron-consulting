@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 @theme {
+  /* On lie l'ensemble des couleurs de la charte à des variables CSS dynamiques */
   --color-brand-slate: var(--bg-primary);
   --color-brand-slatelight: var(--bg-secondary);
   --color-brand-ivory: var(--text-primary);
+  --color-brand-accent: var(--color-accent); /* Or/bronze dynamique */
   
-  --color-brand-accent: #c5a880; /* L'or reste identique dans les deux modes */
   --color-brand-green: #2c4a3e;
   --color-brand-greenlight: #3d6354;
 
@@ -18,13 +19,15 @@
   --bg-primary: #121614;
   --bg-secondary: #1b211d;
   --text-primary: #f4f4f0;
+  --color-accent: #c5a880; /* Or laiton brossé lumineux */
 }
 
-/* 2. Ambiance Vigne (Clair - Vert Sauge / Argile organique reposante) */
+/* 2. Ambiance Vigne (Clair - Tons Lichen, Ardoise et Bronze adoucis) */
 html.theme-vigne {
-  --bg-primary: #C5CDC1;        /* Vert sauge mat / Argile douce (supprime l'agressivité de la lumière) */
-  --bg-secondary: #B5BEB1;     /* Sauge légèrement ombrée pour dessiner les cartes */
-  --text-primary: #141A16;     /* Vert forêt ultra-sombre pour un confort de lecture optimal */
+  --bg-primary: #CAD0C5;        /* Vert lichen mat très apaisant */
+  --bg-secondary: #B1BBAE;     /* Lichen ombré pour détacher nettement les cartes */
+  --text-primary: #0C120E;     /* Vert-noir ultra-profond pour une netteté de lecture parfaite */
+  --color-accent: #8E714C;     /* Or bronze patiné pour un contraste de titre parfait */
 }
 
 body {
