@@ -3,9 +3,10 @@ import Navigation from './components/Navigation';
 import Hero from './components/Hero';
 import About from './components/About';
 import Problems from './components/Problems';
-import Methodology from './components/Methodology'; // 1. Nouvelle importation
+import Methodology from './components/Methodology';
 import Services from './components/Services';
-import Confidentiality from './components/Confidentiality'; // 2. Nouvelle importation
+import AIAgent from './components/AIAgent'; // 1. Nouvelle importation de l'Agent IA
+import Confidentiality from './components/Confidentiality';
 import Contact from './components/Contact';
 
 export default function App() {
@@ -25,16 +26,19 @@ export default function App() {
         {/* 3. Section Problématiques Interactives */}
         <Problems />
 
-        {/* 4. Section Méthodologie (Nouveau) */}
+        {/* 4. Section Méthodologie */}
         <Methodology />
 
         {/* 5. Section Prestations & Outils */}
         <Services />
 
-        {/* 6. Section Confidentialité (Nouveau) */}
+        {/* 6. Section Agent IA (Nouveau - Pile sous les services) */}
+        <AIAgent />
+
+        {/* 7. Section Confidentialité */}
         <Confidentiality />
 
-        {/* 7. Section Contact & Pied de page */}
+        {/* 8. Section Contact & Pied de page */}
         <Contact />
       </main>
     </div>

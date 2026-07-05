@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -117,16 +117,17 @@ export default function Navigation() {
             )}
           </button>
 
+          {/* CTA MODIFIÉ : AGENT IA GRATUIT */}
           <a
-            href="https://bnv-consulting.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#assistant-ia"
             className="flex items-center space-x-2 border border-brand-accent/40 hover:border-brand-accent px-4 py-1.5 rounded text-xs tracking-widest uppercase transition-all duration-300 text-brand-accent hover:bg-brand-accent/10"
           >
-            <Globe className="w-3.5 h-3.5" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 text-brand-accent">
+              <path d="M12 2a10 10 0 0 1 7.54 16.59c-.44.5-.63 1.15-.54 1.81l.3 2.14a1 1 0 0 1-1.45 1.05l-1.92-1c-.59-.3-1.28-.31-1.87-.03A10 10 0 0 1 12 22 10 10 0 0 1 12 2Z"/>
+            </svg>
             <span className="flex items-center">
-              BNV Consulting
-              <span className="text-[9px] font-sans font-bold text-brand-accent bg-brand-accent/15 px-1 py-0.5 rounded ml-1.5 tracking-normal">BETA</span>
+              Agent IA gratuit
+              <span className="text-[9px] font-sans font-bold text-brand-accent bg-brand-accent/15 px-1 py-0.5 rounded ml-1.5 tracking-normal">LIVE</span>
             </span>
           </a>
         </div>
@@ -162,17 +163,14 @@ export default function Navigation() {
             {isVigneMode ? "Ambiance Chai (Sombre)" : "Ambiance Vigne (Clair)"}
           </button>
 
+          {/* CTA MOBILE MODIFIÉ */}
           <a
-            href="https://bnv-consulting.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#assistant-ia"
+            onClick={() => setIsOpen(false)}
             className="flex items-center justify-center space-x-2 border border-brand-accent py-2.5 rounded text-xs tracking-widest uppercase text-brand-accent"
           >
-            <Globe className="w-4 h-4" />
-            <span className="flex items-center">
-              BNV Consulting
-              <span className="text-[9px] font-sans font-bold text-brand-accent bg-brand-accent/15 px-1 py-0.5 rounded ml-1.5 tracking-normal">BETA</span>
-            </span>
+            <span>Agent IA gratuit</span>
+            <span className="text-[9px] font-sans font-bold bg-brand-slate/10 px-1 py-0.5 rounded tracking-normal">LIVE</span>
           </a>
         </div>
       )}
