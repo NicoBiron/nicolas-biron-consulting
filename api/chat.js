@@ -1,4 +1,4 @@
-// Fonction serveur Vercel corrigée avec l'alias -latest pour l'API REST de Google
+// Fonction serveur Vercel mise à jour en 2026 avec le modèle Gemini 2.5 Flash
 export default async function handler(req, res) {
   // Gestion du CORS (Autorise les requêtes depuis votre site One-Pager)
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -64,8 +64,8 @@ export default async function handler(req, res) {
       }]
     };
 
-    // APPEL CORRIGÉ : Utilisation de l'alias stable "gemini-1.5-flash-latest"
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, {
+    // APPEL CORRIGÉ : Passage au modèle de dernière génération Gemini 2.5 Flash
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
