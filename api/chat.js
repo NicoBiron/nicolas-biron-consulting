@@ -1,6 +1,6 @@
-// Fonction serveur Vercel pour appeler Gemini 1.5 Flash de manière sécurisée
+// Fonction serveur Vercel corrigée avec l'alias -latest pour l'API REST de Google
 export default async function handler(req, res) {
-  // Gestion du CORS
+  // Gestion du CORS (Autorise les requêtes depuis votre site One-Pager)
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -36,16 +36,15 @@ export default async function handler(req, res) {
   Tu es un outil d'aide à la décision technique et financier. Tu ne remplaces pas l'expertise humaine, tu la prépares. À la fin de CHAQUE diagnostic (qu'il soit agronomique ou financier), tu dois formuler une recommandation d'amélioration concrète et conclure poliment en invitant l'utilisateur à réserver un appel de diagnostic gratuit de 15 minutes en direct avec le vrai Nicolas Biron en utilisant le bouton de prise de rendez-vous (Calendly) juste à côté ou le formulaire de contact.`;
 
   try {
-    // Construction du payload pour l'API Gemini 1.5 Flash
     const contentsParts = [];
 
-    // Si une image au format base64 est envoyée, on l'ajoute au payload
+    // Si une image au format base64 est envoyée, on l'ajoute au payload (Syntaxe REST snake_case)
     if (image) {
       const base64Data = image.split(',')[1];
       const mimeType = image.split(',')[0].split(':')[1].split(';')[0];
       contentsParts.push({
-        inlineData: {
-          mimeType: mimeType,
+        inline_data: {
+          mime_type: mimeType,
           data: base64Data
         }
       });
@@ -54,8 +53,9 @@ export default async function handler(req, res) {
     // Ajout du message texte de l'utilisateur
     contentsParts.push({ text: message });
 
+    // Payload au format snake_case conforme aux exigences de l'API REST native de Google
     const payload = {
-      systemInstruction: {
+      system_instruction: {
         parts: [{ text: systemInstruction }]
       },
       contents: [{
@@ -64,7 +64,8 @@ export default async function handler(req, res) {
       }]
     };
 
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+    // APPEL CORRIGÉ : Utilisation de l'alias stable "gemini-1.5-flash-latest"
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -75,6 +76,8 @@ export default async function handler(req, res) {
     const data = await response.json();
     
     if (!response.ok) {
+      // Enregistre l'erreur exacte renvoyée par Google dans vos logs Vercel pour le diagnostic
+      console.error("Détails de l'erreur renvoyée par Google :", data);
       throw new Error(data.error?.message || "Erreur de communication avec Gemini");
     }
 
