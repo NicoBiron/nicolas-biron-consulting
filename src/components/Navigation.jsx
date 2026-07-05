@@ -82,7 +82,7 @@ export default function Navigation() {
         </a>
 
         {/* Liens Desktop (Espace libéré et aéré) */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -117,7 +117,7 @@ export default function Navigation() {
             )}
           </button>
 
-          {/* CTA MODIFIÉ : AGENT IA GRATUIT */}
+          {/* CTA 1 : AGENT IA GRATUIT */}
           <a
             href="#assistant-ia"
             className="flex items-center space-x-2 border border-brand-accent/40 hover:border-brand-accent px-4 py-1.5 rounded text-xs tracking-widest uppercase transition-all duration-300 text-brand-accent hover:bg-brand-accent/10"
@@ -128,6 +128,24 @@ export default function Navigation() {
             <span className="flex items-center">
               Agent IA gratuit
               <span className="text-[9px] font-sans font-bold text-brand-accent bg-brand-accent/15 px-1 py-0.5 rounded ml-1.5 tracking-normal">LIVE</span>
+            </span>
+          </a>
+
+          {/* CTA 2 : BNV CONSULTING (RÉINTRODUIT) */}
+          <a
+            href="https://bnv-consulting.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 border border-brand-accent/40 hover:border-brand-accent px-4 py-1.5 rounded text-xs tracking-widest uppercase transition-all duration-300 text-brand-accent hover:bg-brand-accent/10"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 text-brand-accent">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span className="flex items-center">
+              BNV Consulting
+              <span className="text-[9px] font-sans font-bold text-brand-accent bg-brand-accent/15 px-1 py-0.5 rounded ml-1.5 tracking-normal">BETA</span>
             </span>
           </a>
         </div>
@@ -163,14 +181,34 @@ export default function Navigation() {
             {isVigneMode ? "Ambiance Chai (Sombre)" : "Ambiance Vigne (Clair)"}
           </button>
 
-          {/* CTA MOBILE MODIFIÉ */}
+          {/* CTA MOBILE 1 : AGENT IA */}
           <a
             href="#assistant-ia"
             onClick={() => setIsOpen(false)}
             className="flex items-center justify-center space-x-2 border border-brand-accent py-2.5 rounded text-xs tracking-widest uppercase text-brand-accent"
           >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-brand-accent">
+              <path d="M12 2a10 10 0 0 1 7.54 16.59c-.44.5-.63 1.15-.54 1.81l.3 2.14a1 1 0 0 1-1.45 1.05l-1.92-1c-.59-.3-1.28-.31-1.87-.03A10 10 0 0 1 12 22 10 10 0 0 1 12 2Z"/>
+            </svg>
             <span>Agent IA gratuit</span>
-            <span className="text-[9px] font-sans font-bold bg-brand-slate/10 px-1 py-0.5 rounded tracking-normal">LIVE</span>
+            <span className="text-[9px] font-sans font-bold bg-brand-slate/10 px-1 py-0.5 rounded tracking-normal ml-2">LIVE</span>
+          </a>
+
+          {/* CTA MOBILE 2 : BNV CONSULTING */}
+          <a
+            href="https://bnv-consulting.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center justify-center space-x-2 border border-brand-accent py-2.5 rounded text-xs tracking-widest uppercase text-brand-accent"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-brand-accent">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span>BNV Consulting</span>
+            <span className="text-[9px] font-sans font-bold bg-brand-slate/10 px-1 py-0.5 rounded tracking-normal ml-2">BETA</span>
           </a>
         </div>
       )}

@@ -1,4 +1,4 @@
-// Fonction serveur Vercel mise à jour en 2026 avec le modèle Gemini 2.5 Flash
+// Fonction serveur Vercel configurée en Gemini 3.5 Flash et formatée en texte brut (sans Markdown)
 export default async function handler(req, res) {
   // Gestion du CORS (Autorise les requêtes depuis votre site One-Pager)
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -21,8 +21,11 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "Clé API Gemini manquante dans la configuration du serveur" });
   }
 
-  // Le Prompt Système Nicolas Biron
+  // Le Prompt Système Nicolas Biron (avec instructions de formatage de texte brut strictes)
   const systemInstruction = `Tu es le jumeau numérique de Nicolas Biron, consultant indépendant d'élite en viticulture de précision, agronomie et finance viticole, basé à Bordeaux en 2026.
+  
+  RÈGLE DE FORMATAGE ABSOLUE :
+  Tu dois rédiger toutes tes réponses EXCLUSIVEMENT en TEXTE BRUT (plain text). N'utilise JAMAIS de syntaxe Markdown (pas d'étoiles **, pas de dièses #, pas de tirets de listes ou de puces *). Pour structurer ton texte et le rendre agréable à lire, utilise de simples retours à la ligne (doubles sauts de ligne pour marquer les paragraphes) et écris tes titres de sections importants en LETTRES MAJUSCULES (ex: DIAGNOSTIC TECHNIQUE :, RECOMMANDATION FINANCIÈRE :).
   
   1. TON IDENTITÉ & TON STYLE :
   Tu es un Ingénieur Agronome et Œnologue diplômé (DNO), cumulant 10 ans d'expérience de terrain sur 4 typologies de vignobles et châteaux différents (de l'excellence des grands crus aux restructurations de crise). Tu es pragmatique, calme, rigoureux, chaleureux, profondément vigneron et ancré dans la réalité de la terre. Tu t'exprimes en français avec une clarté absolue, sans jargon inutile, mais avec une précision scientifique et analytique totale.
@@ -64,8 +67,8 @@ export default async function handler(req, res) {
       }]
     };
 
-    // APPEL CORRIGÉ : Passage au modèle de dernière génération Gemini 2.5 Flash
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+    // APPEL : Passage au modèle de dernière génération Gemini 3.5 Flash
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -76,7 +79,6 @@ export default async function handler(req, res) {
     const data = await response.json();
     
     if (!response.ok) {
-      // Enregistre l'erreur exacte renvoyée par Google dans vos logs Vercel pour le diagnostic
       console.error("Détails de l'erreur renvoyée par Google :", data);
       throw new Error(data.error?.message || "Erreur de communication avec Gemini");
     }
