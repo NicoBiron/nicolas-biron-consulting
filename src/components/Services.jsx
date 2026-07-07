@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, HelpCircle, ArrowRight, Layers, Compass, BarChart3 } from 'lucide-react';
+import { Compass, BarChart3, Layers } from 'lucide-react';
 
 export default function Services() {
   const servicesList = [
@@ -30,12 +30,12 @@ export default function Services() {
   return (
     <section id="services" className="py-24 md:py-32 bg-brand-slate relative overflow-hidden">
       
-      {/* IMAGE DE FOND PERSONNALISÉE (arpentage.jpg - Opacité 15%) */}
+      {/* IMAGE DE FOND PERSONNALISÉE (arpentage.jpg - Opacité adoucie à 15%) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <img
           src="/Images/arpentage.jpg"
           alt="Arpentage et viticulture de précision en arrière-plan"
-          className="w-full h-full object-cover opacity-35"
+          className="w-full h-full object-cover opacity-15"
         />
         {/* Dégradés d'ambiance sombres */}
         <div className="absolute inset-0 bg-gradient-to-b from-brand-slate/40 via-brand-slate/90 to-brand-slate" />
@@ -58,7 +58,7 @@ export default function Services() {
         </div>
 
         {/* Grille des Prestations */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {servicesList.map((service, index) => (
             <motion.div
               key={index}
@@ -103,39 +103,6 @@ export default function Services() {
             </motion.div>
           ))}
         </div>
-
-        {/* Bloc CTA de redirection externe */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="bg-brand-slatelight/20 backdrop-blur-sm border border-brand-accent/20 rounded-xl p-8 md:p-12 text-center max-w-4xl mx-auto relative overflow-hidden"
-        >
-          {/* Ornement lumineux arrière plan */}
-          <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-brand-green/10 rounded-full filter blur-[80px] pointer-events-none" />
-
-          <span className="inline-flex items-center px-2.5 py-1 rounded bg-brand-accent/10 border border-brand-accent/30 text-[10px] tracking-widest text-brand-accent uppercase font-sans font-semibold mb-4">
-            Plateforme  BNV Consulting
-          </span>
-          <h3 className="font-serif text-2xl md:text-3xl text-brand-ivory font-semibold mb-4 leading-tight">
-            Accéder au descriptif des services de viticulture de précision, de mes outils & ressources partagés
-          </h3>
-          <p className="font-sans text-xs md:text-sm text-brand-ivory/60 max-w-2xl mx-auto mb-8 leading-relaxed">
-            Pour mes clients partenaires, une plateforme dédiée est en cours de développement regroupant notre outil de pilotage financier, nos solutions de viticulture de précision et ma banque de prompts IA spécialisés.
-          </p>
-          
-          <a
-            href="https://bnv-consulting.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center justify-center space-x-3 bg-brand-accent text-brand-slate hover:bg-brand-ivory font-sans font-semibold text-xs tracking-widest uppercase px-8 py-4 rounded transition-all duration-300 shadow-md hover:shadow-brand-accent/10"
-          >
-            <span>Explorer la plateforme</span>
-            <span className="text-[10px] font-sans font-bold bg-brand-slate/10 px-1 py-0.5 rounded tracking-normal">BETA</span>
-            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </a>
-        </motion.div>
 
       </div>
     </section>

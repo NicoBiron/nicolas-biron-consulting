@@ -126,7 +126,7 @@ export default function Navigation() {
               <path d="M12 2a10 10 0 0 1 7.54 16.59c-.44.5-.63 1.15-.54 1.81l.3 2.14a1 1 0 0 1-1.45 1.05l-1.92-1c-.59-.3-1.28-.31-1.87-.03A10 10 0 0 1 12 22 10 10 0 0 1 12 2Z"/>
             </svg>
             <span className="flex items-center">
-              Agent IA gratuit
+              Agents IA gratuits
               <span className="text-[9px] font-sans font-bold text-brand-accent bg-brand-accent/15 px-1 py-0.5 rounded ml-1.5 tracking-normal">LIVE</span>
             </span>
           </a>
@@ -172,7 +172,7 @@ export default function Navigation() {
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 text-brand-accent mr-2">
               <path d="M12 2a10 10 0 0 1 7.54 16.59c-.44.5-.63 1.15-.54 1.81l.3 2.14a1 1 0 0 1-1.45 1.05l-1.92-1c-.59-.3-1.28-.31-1.87-.03A10 10 0 0 1 12 22 10 10 0 0 1 12 2Z"/>
             </svg>
-            <span>Agent IA gratuit</span>
+            <span>Agents IA gratuits</span>
             <span className="text-[9px] font-sans font-bold bg-brand-slate/10 px-1 py-0.5 rounded tracking-normal ml-2">LIVE</span>
           </a>
         </div>

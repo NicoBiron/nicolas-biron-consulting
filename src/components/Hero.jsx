@@ -83,7 +83,7 @@ export default function Hero() {
               <path d="M12 2a10 10 0 0 1 7.54 16.59c-.44.5-.63 1.15-.54 1.81l.3 2.14a1 1 0 0 1-1.45 1.05l-1.92-1c-.59-.3-1.28-.31-1.87-.03A10 10 0 0 1 12 22 10 10 0 0 1 12 2Z"/>
             </svg>
             <span className="border-b border-brand-accent/30 group-hover:border-brand-ivory transition-colors pb-0.5">
-              Tester mon jumeau numérique IA
+              Testez mes jumeaux numériques (agents IA dédiés, du complant au comptable)
             </span>
           </a>
         </motion.div>

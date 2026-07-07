@@ -1,9 +1,47 @@
 import React, { useState, useRef } from 'react';
 
 export default function AIAgent() {
-  const [messages, setMessages] = useState([
-    { role: 'assistant', text: "Bonjour, je suis l'assistant numérique de Nicolas Biron. Vous pouvez m'envoyer une question agronomique, me parler de vos coûts de revient pour un audit financier, ou même me téléverser la photo d'une feuille de vigne pour diagnostiquer une carence." }
-  ]);
+  // Configuration esthétique et textuelle de chaque agent (Nouveaux noms)
+  const agentsConfig = {
+    agro: {
+      name: "VitiPilot",
+      emoji: "🌿",
+      colorClass: "text-emerald-400 border-emerald-500/20 bg-emerald-500/10",
+      dotColor: "bg-emerald-500",
+      pingColor: "bg-emerald-400",
+      placeholder: "Décrivez un trouble physiologique, un comportement anormal ou posez une question d'agronomie...",
+      welcomeMessage: "Bonjour, je suis VitiPilot, votre assistant en agronomie générale, viticulture de précision, climatologie et pédologie. Vous pouvez me poser une question ou me téléverser la photo d'une feuille de vigne pour réaliser un pré-diagnostic agronomique."
+    },
+    oeno: {
+      name: "OeNew",
+      emoji: "🍷",
+      colorClass: "text-red-400 border-red-500/20 bg-red-500/10",
+      dotColor: "bg-red-500",
+      pingColor: "bg-red-400",
+      placeholder: "Parlez-moi de profils produits, d'assemblages innovants ou de positionnement marketing...",
+      welcomeMessage: "Bonjour, je suis OeNew, votre copilote en création de nouveaux produits/cuvées et marketing innovant du vin. Je suis là pour vous aider à façonner des styles de vins différenciants et à valoriser votre production face aux nouvelles tendances de consommation."
+    },
+    business: {
+      name: "OpTi",
+      emoji: "💼",
+      colorClass: "text-amber-400 border-amber-500/20 bg-amber-500/10",
+      dotColor: "bg-amber-500",
+      pingColor: "bg-amber-400",
+      placeholder: "Saisissez vos charges, vos coûts de revient ou demandez des pistes d'optimisation financière...",
+      welcomeMessage: "Bonjour, je suis OpTi, votre conseiller en modélisation financière et ROI de crise. Parlez-moi de vos coûts, investissements, de vos rendements ou de vos débouchés pour concevoir un plan d'action d'optimisation de vos marges."
+    }
+  };
+
+  // État de l'onglet actif ('agro', 'oeno', ou 'business')
+  const [activeAgent, setActiveAgent] = useState('agro');
+
+  // Historique de discussion isolé pour chaque agent
+  const [chatHistories, setChatHistories] = useState({
+    agro: [{ role: 'assistant', text: agentsConfig.agro.welcomeMessage }],
+    oeno: [{ role: 'assistant', text: agentsConfig.oeno.welcomeMessage }],
+    business: [{ role: 'assistant', text: agentsConfig.business.welcomeMessage }]
+  });
+
   const [inputText, setInputText] = useState('');
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
@@ -29,7 +67,7 @@ export default function AIAgent() {
   };
 
   const handleSend = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     if (!inputText.trim() && !imageFile) return;
 
     const userMessage = { 
@@ -38,7 +76,11 @@ export default function AIAgent() {
       image: imagePreview 
     };
 
-    setMessages((prev) => [...prev, userMessage]);
+    setChatHistories((prev) => ({
+      ...prev,
+      [activeAgent]: [...prev[activeAgent], userMessage]
+    }));
+
     setInputText('');
     handleRemoveImage();
     setLoading(true);
@@ -51,51 +93,110 @@ export default function AIAgent() {
         },
         body: JSON.stringify({
           message: userMessage.text,
-          image: userMessage.image // Envoi au format Base64
+          image: userMessage.image, // Envoi Base64
+          agentType: activeAgent   // Indique au serveur quel prompt charger
         }),
       });
 
       const data = await response.json();
       
       if (response.ok) {
-        setMessages((prev) => [...prev, { role: 'assistant', text: data.reply }]);
+        setChatHistories((prev) => ({
+          ...prev,
+          [activeAgent]: [...prev[activeAgent], { role: 'assistant', text: data.reply }]
+        }));
       } else {
-        setMessages((prev) => [...prev, { role: 'assistant', text: "Désolé, je rencontre une petite difficulté à analyser votre demande. Veuillez vérifier la connexion." }]);
+        setChatHistories((prev) => ({
+          ...prev,
+          [activeAgent]: [...prev[activeAgent], { role: 'assistant', text: "Désolé, je rencontre une petite difficulté à analyser votre demande. Veuillez vérifier la connexion." }]
+        }));
       }
     } catch (error) {
       console.error("Erreur de chat :", error);
-      setMessages((prev) => [...prev, { role: 'assistant', text: "Erreur réseau : impossible de joindre mon serveur d'analyse." }]);
+      setChatHistories((prev) => ({
+        ...prev,
+        [activeAgent]: [...prev[activeAgent], { role: 'assistant', text: "Erreur réseau : impossible de joindre le serveur d'analyse." }]
+      }));
     }
     setLoading(false);
   };
 
+  const currentAgent = agentsConfig[activeAgent];
+  const currentMessages = chatHistories[activeAgent];
+
   return (
-    <section id="assistant-ia" className="py-24 md:py-32 bg-brand-slate border-t border-white/5 relative">
+    <section id="assistant-ia" className="py-24 md:py-32 bg-brand-slate border-t border-white/5 relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         
-        {/* En-tête de l'Agent */}
+        {/* En-tête explicatif de la section */}
         <div className="text-center mb-12">
-          <span className="inline-flex items-center px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-[10px] tracking-widest text-brand-accent uppercase font-sans font-semibold mb-4">
-            <span className="relative flex h-2 w-2 mr-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            Agent IA Décisionnel Gratuit
+          <span className="inline-flex items-center px-2.5 py-1 rounded bg-brand-accent/15 border border-brand-accent/30 text-[10px] tracking-widest text-brand-accent uppercase font-sans font-semibold mb-4">
+            Suite Décisionnelle IA
           </span>
           <h2 className="font-serif text-3xl md:text-5xl text-brand-ivory font-semibold mb-4 leading-tight">
-            Interrogez mon jumeau numérique.
+            Interrogez mes jumeaux numériques.
           </h2>
-          <p className="font-sans text-xs md:text-sm text-brand-ivory/60 max-w-xl mx-auto leading-relaxed">
-            Un outil de pré-diagnostic agronomique et financier immédiat, entraîné sur mes méthodologies et le contexte de crise de la filière en 2026.
+          <p className="font-sans text-xs md:text-sm text-brand-ivory/60 max-w-2xl mx-auto leading-relaxed">
+            Chacun de ces agents a été entraîné sur mes fiches de R&D, mes modèles de restructuration financière de crise et mes méthodologies d'ingénieur œnologue (DNO) pour vous apporter un premier niveau d'analyse instantané et adapté à vos enjeux.
           </p>
         </div>
 
         {/* Fenêtre de Chat principale */}
-        <div className="bg-brand-slatelight/30 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col h-[550px] relative">
+        <div className="bg-brand-slatelight/30 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col h-[580px] relative">
           
-          {/* Liste des Messages */}
+          {/* SÉLECTEUR D'ONGLETS IA (CORRIGÉ AVEC LES BONS NOMS) */}
+          <div className="grid grid-cols-3 border-b border-white/10 bg-brand-slate/40 p-1">
+            <button
+              onClick={() => setActiveAgent('agro')}
+              className={`py-3.5 text-center text-[10px] md:text-xs tracking-widest uppercase font-sans font-medium transition-all duration-300 cursor-pointer ${
+                activeAgent === 'agro' 
+                  ? 'bg-brand-slatelight border border-white/10 rounded text-brand-accent font-semibold shadow-inner' 
+                  : 'text-brand-ivory/50 hover:text-brand-ivory'
+              }`}
+            >
+              🌿 VitiPilot
+            </button>
+            <button
+              onClick={() => setActiveAgent('oeno')}
+              className={`py-3.5 text-center text-[10px] md:text-xs tracking-widest uppercase font-sans font-medium transition-all duration-300 cursor-pointer ${
+                activeAgent === 'oeno' 
+                  ? 'bg-brand-slatelight border border-white/10 rounded text-brand-accent font-semibold shadow-inner' 
+                  : 'text-brand-ivory/50 hover:text-brand-ivory'
+              }`}
+            >
+              🍷 OeNew
+            </button>
+            <button
+              onClick={() => setActiveAgent('business')}
+              className={`py-3.5 text-center text-[10px] md:text-xs tracking-widest uppercase font-sans font-medium transition-all duration-300 cursor-pointer ${
+                activeAgent === 'business' 
+                  ? 'bg-brand-slatelight border border-white/10 rounded text-brand-accent font-semibold shadow-inner' 
+                  : 'text-brand-ivory/50 hover:text-brand-ivory'
+              }`}
+            >
+              💼 OpTi
+            </button>
+          </div>
+
+          {/* En-tête de l'agent actif avec point d'activité pulsant spécifique */}
+          <div className="px-6 py-3 border-b border-white/5 bg-brand-slate/20 flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <span className="relative flex h-2 w-2">
+                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${currentAgent.pingColor}`}></span>
+                <span className={`relative inline-flex rounded-full h-2 w-2 ${currentAgent.dotColor}`}></span>
+              </span>
+              <span className="font-sans text-[10px] md:text-xs uppercase tracking-wider text-brand-ivory/70">
+                {currentAgent.name} est en ligne (Juillet 2026)
+              </span>
+            </div>
+            <span className="font-sans text-[9px] uppercase tracking-widest text-brand-accent/50">
+              Diagnostic instantané
+            </span>
+          </div>
+          
+          {/* Liste des Messages du chat actif */}
           <div className="flex-1 overflow-y-auto p-6 space-y-6">
-            {messages.map((msg, index) => (
+            {currentMessages.map((msg, index) => (
               <div 
                 key={index} 
                 className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'}`}
@@ -105,7 +206,6 @@ export default function AIAgent() {
                     ? 'bg-brand-accent text-brand-slate font-medium rounded-br-none' 
                     : 'bg-brand-slate/80 border border-white/5 text-brand-ivory/90 rounded-bl-none'
                 }`}>
-                  {/* Si le message contient une image téléversée */}
                   {msg.image && (
                     <img 
                       src={msg.image} 
@@ -113,16 +213,14 @@ export default function AIAgent() {
                       className="max-h-48 rounded mb-3 border border-white/10 object-contain"
                     />
                   )}
-                  {/* Texte du message */}
                   <p className="whitespace-pre-line">{msg.text}</p>
                 </div>
                 <span className="text-[9px] uppercase tracking-wider text-brand-ivory/30 mt-1.5 font-sans px-1">
-                  {msg.role === 'user' ? 'Vous' : 'Assistant Nicolas Biron'}
+                  {msg.role === 'user' ? 'Vous' : currentAgent.name}
                 </span>
               </div>
             ))}
             
-            {/* Indicateur de chargement */}
             {loading && (
               <div className="flex flex-col items-start">
                 <div className="bg-brand-slate/80 border border-white/5 rounded-lg rounded-bl-none p-4 flex items-center space-x-2">
@@ -134,10 +232,18 @@ export default function AIAgent() {
             )}
           </div>
 
+          {/* Bandeau de limitation d'utilisation (Version d'évaluation gratuite) */}
+          <div className="px-6 py-2.5 bg-brand-accent/5 border-t border-b border-white/5 text-[9px] md:text-[11px] text-brand-accent/90 font-sans flex flex-col md:flex-row items-start md:items-center justify-between gap-2">
+            <span className="flex items-center gap-1.5 font-light">
+              <span className="font-bold uppercase tracking-wider text-[8px] bg-brand-accent/15 px-1 py-0.5 rounded">Version gratuite</span>
+              Pour coupler l'IA avec vos propres données du NDVI jusqu'au bilan comptable en passant par toutes les données parcellaires de votre vignoble, contactez-moi pour avoir des résultats haute-couture.
+            </span>
+            <a href="#contact" className="underline font-semibold hover:text-brand-ivory transition-colors whitespace-nowrap self-end md:self-auto">Collaborer →</a>
+          </div>
+
           {/* Zone de saisie + boutons */}
-          <form onSubmit={handleSend} className="p-4 bg-brand-slate/50 border-t border-white/5 space-y-3 relative z-10">
+          <div className="p-4 bg-brand-slate/50 space-y-3 relative z-10">
             
-            {/* Aperçu de l'image sélectionnée avant envoi */}
             {imagePreview && (
               <div className="relative inline-block">
                 <img src={imagePreview} alt="Aperçu avant envoi" className="h-16 w-16 object-cover rounded border border-brand-accent/40" />
@@ -172,18 +278,26 @@ export default function AIAgent() {
                 className="hidden" 
               />
 
-              {/* Champ d'écriture */}
-              <input
-                type="text"
+              {/* Champ d'écriture de type TEXTAREA responsif au retour à la ligne */}
+              <textarea
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
-                placeholder="Posez votre question ou parlez de vos coûts de revient..."
-                className="flex-1 bg-brand-slate border border-white/10 rounded-lg px-4 py-3 text-xs md:text-sm focus:border-brand-accent focus:outline-none placeholder:text-brand-ivory/20"
+                onKeyDown={(e) => {
+                  // Envoi automatique lors de la touche "Entrée" (sauf si Shift est enfoncé)
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSend(e);
+                  }
+                }}
+                placeholder={currentAgent.placeholder}
+                rows={1}
+                className="flex-1 bg-brand-slate border border-white/10 rounded-lg px-4 py-3 text-xs md:text-sm focus:border-brand-accent focus:outline-none placeholder:text-brand-ivory/20 resize-none max-h-24 overflow-y-auto align-middle"
               />
 
               {/* Bouton Envoi */}
               <button
-                type="submit"
+                type="button"
+                onClick={handleSend}
                 className="p-3 bg-brand-green hover:bg-brand-greenlight text-brand-ivory rounded-lg transition-colors cursor-pointer"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
@@ -192,7 +306,7 @@ export default function AIAgent() {
                 </svg>
               </button>
             </div>
-          </form>
+          </div>
 
         </div>
 
