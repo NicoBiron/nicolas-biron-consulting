@@ -1,4 +1,4 @@
-// Fonction serveur Vercel - Routeur intelligent 2026 pour VitiPilot, OeNew et OpTi (Gemini 3.5 Flash)
+// Fonction serveur Vercel - Routeur intelligent 2026 pour VitiPilot, OeNew et OpTi (Gemini 2.5 Flash)
 export default async function handler(req, res) {
   // Gestion du CORS (Autorise les requêtes depuis votre site One-Pager)
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -117,7 +117,7 @@ export default async function handler(req, res) {
       - Coût complet d'un Bordeaux générique domaine : Compter entre 3,90 € et 4,50 € par bouteille embouteillée au domaine (hors overheads majeurs et frais marketing).
       
       4. LE CRITIQUE DE LA VIABILITÉ ÉCONOMIQUE :
-      - Le vrac AOC Bordeaux est vendu historiquement à environ 1 215 €/tonneau (900 L) alors que son coût de production minimal est de 1 424 €/tonneau. Un domaine vendant majoritairement en vrac est en perte structurelle chronique. Il doit réorienter son mix produit ou diversifier son pricing.
+      - Le vrac AOC Bordeaux est vendu historiquement à environ 1 215 €/tonneau (900 L) alors que son coût de production minimal é de 1 424 €/tonneau. Un domaine vendant majoritairement en vrac est en perte structurelle chronique. Il doit réorienter son mix produit ou diversifier son pricing.
       
       5. LEVIERS DE RESTRUCTURATION PRIORITAIRES DE L'EBITDA :
       - Optimisation du mix produit : Passer du vrac brut vers l'embouteillage (même via des marques secondaires) pour capter de la marge.
@@ -216,8 +216,8 @@ export default async function handler(req, res) {
       }]
     };
 
-    // Appel à l'API de dernière génération Gemini 3.5 Flash
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${apiKey}`, {
+    // APPEL : Passage au modèle de dernière génération stable Gemini 2.5 Flash
+    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
