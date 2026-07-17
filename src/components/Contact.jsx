@@ -54,12 +54,12 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 md:py-32 bg-brand-slate border-t border-white/5 relative overflow-hidden">
       
-      {/* IMAGE DE FOND PERSONNALISÉE (contact.jpg - Opacité 15%) */}
+      {/* IMAGE DE FOND PERSONNALISÉE (contact.jpg - Opacité 25%) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <img
           src="/Images/contact.jpg"
           alt="Atmosphère de chai ou de vignoble en arrière-plan"
-          className="w-full h-full object-cover opacity-15"
+          className="w-full h-full object-cover opacity-25"
         />
         {/* Dégradés d'ambiance sombres */}
         <div className="absolute inset-0 bg-gradient-to-b from-brand-slate/40 via-brand-slate/90 to-brand-slate" />

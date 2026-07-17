@@ -49,7 +49,20 @@ export default function Problems() {
   ];
 
   return (
-    <section id="problematiques" className="py-24 md:py-32 bg-brand-slatelight/20 border-t border-white/5 relative">
+    <section id="problematiques" className="py-24 md:py-32 bg-brand-slatelight/20 border-t border-white/5 relative overflow-hidden">
+      
+      {/* IMAGE DE FOND PERSONNALISÉE (Problems.jpg - Opacité 20%) */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <img
+          src="/Images/Problems.jpg"
+          alt="Contexte et problématiques viticoles en arrière-plan"
+          className="w-full h-full object-cover opacity-20"
+        />
+        {/* Dégradés d'ambiance sombres */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-slate/40 via-brand-slate/90 to-brand-slate" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,#121614_95%)]" />
+      </div>
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Structure en Grille à 2 Colonnes */}
@@ -86,7 +99,7 @@ export default function Problems() {
                   className={`border transition-all duration-300 rounded ${
                     isOpen 
                       ? 'bg-brand-slatelight border-brand-accent/40 shadow-lg shadow-brand-green/5' 
-                      : 'bg-brand-slate/40 border-white/5 hover:border-white/10'
+                      : 'bg-brand-slate/40 backdrop-blur-sm border-white/10 hover:border-white/20'
                   }`}
                 >
                   {/* En-tête cliquable */}

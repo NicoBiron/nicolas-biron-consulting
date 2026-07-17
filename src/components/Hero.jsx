@@ -29,14 +29,14 @@ export default function Hero() {
           Nicolas Biron
         </motion.span>
 
-        {/* Titre principal corrigé pour les grands écrans (lg:text-7xl) */}
+        {/* Titre d'élite compact et haut de gamme, inspiré du style éditorial */}
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="font-serif text-5xl md:text-7xl lg:text-7xl text-brand-ivory font-semibold tracking-wide leading-tight max-w-4xl"
+          className="font-serif text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-brand-ivory font-semibold tracking-wide leading-tight max-w-5xl"
         >
-          Consulting Vitivinicole
+          R&D • Technique • Réorientation financière
         </motion.h1>
 
         <motion.div 
@@ -46,13 +46,14 @@ export default function Hero() {
           className="h-[1px] w-24 bg-brand-accent/60 my-6 md:my-8"
         />
 
+        {/* Nouvelle phrase d'accroche d'ingénierie et de résilience */}
         <motion.p 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="font-sans text-sm md:text-base lg:text-lg text-brand-ivory/70 max-w-2xl font-light tracking-wide leading-relaxed"
+          className="font-sans text-sm md:text-base lg:text-lg text-brand-ivory/70 max-w-3xl font-light tracking-wide leading-relaxed"
         >
-          L'alliance de l'agro-météorologie, de l'expertise oenologique et de l'optimisation financière au service de vos terroirs.
+          Votre prestataire en ingénierie agronomique, oenologique et financière au service de la résilience et de la rentabilité de vos domaines.
         </motion.p>
 
         {/* Double boutons d'actions empilés verticalement et espacés */}
@@ -73,12 +74,11 @@ export default function Hero() {
             </span>
           </a>
 
-          {/* Bouton Secondaire : Appel à l'Agent IA (Nouveau) */}
+          {/* Bouton Secondaire : Appel aux Jumeaux Numériques */}
           <a
             href="#assistant-ia"
             className="group flex items-center space-x-2 text-[10px] tracking-[0.25em] uppercase text-brand-accent hover:text-brand-ivory transition-colors duration-300 py-1"
           >
-            {/* Petite icône d'étincelles/innovation */}
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 transition-transform duration-300 group-hover:rotate-12">
               <path d="M12 2a10 10 0 0 1 7.54 16.59c-.44.5-.63 1.15-.54 1.81l.3 2.14a1 1 0 0 1-1.45 1.05l-1.92-1c-.59-.3-1.28-.31-1.87-.03A10 10 0 0 1 12 22 10 10 0 0 1 12 2Z"/>
             </svg>

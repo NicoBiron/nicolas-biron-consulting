@@ -30,12 +30,12 @@ export default function Services() {
   return (
     <section id="services" className="py-24 md:py-32 bg-brand-slate relative overflow-hidden">
       
-      {/* IMAGE DE FOND PERSONNALISÉE (arpentage.jpg - Opacité adoucie à 15%) */}
+      {/* IMAGE DE FOND PERSONNALISÉE (arpentage.jpg - Opacité adoucie à 25%) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <img
           src="/Images/arpentage.jpg"
           alt="Arpentage et viticulture de précision en arrière-plan"
-          className="w-full h-full object-cover opacity-15"
+          className="w-full h-full object-cover opacity-25"
         />
         {/* Dégradés d'ambiance sombres */}
         <div className="absolute inset-0 bg-gradient-to-b from-brand-slate/40 via-brand-slate/90 to-brand-slate" />

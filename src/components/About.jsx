@@ -64,10 +64,10 @@ export default function About() {
                 "Pour qu’un grand terroir traverse la crise, le domaine doit d'abord respirer financièrement. L'excellence commence au creux du cep, se révèle dans le secret du chai, et se sécurise dans la rigueur des comptes."
               </p>
               <p className="font-sans text-sm md:text-base text-brand-ivory/60 leading-relaxed">
-                <strong>Ingénieur agronome et œnologue (DNO)</strong>, je conseille les propriétés et les investisseurs dans la transformation technique et économique de leurs exploitations. Fort de dix ans d'expérience de terrain sur des postes de direction technique et d’encadrement au sein de quatre structures aux terroirs et problématiques radicalement différents, j'allie l'agilité opérationnelle à la hauteur de vue du pilotage stratégique. 
+                <strong>Ingénieur agronome et œnologue (DNO)</strong>, je conseille les propriétés et les investisseurs dans la transformation technique et économique de leurs exploitations. Fort de dix ans d'expérience de terrain sur des postes techniques, stratégiques et d’encadrement au sein de quatre structures aux terroirs et problématiques radicalement différents, j'allie l'agilité opérationnelle à la hauteur de vue du pilotage stratégique. 
               </p>
               <p className="font-sans text-sm md:text-base text-brand-ivory/60 leading-relaxed">
-                Mon travail consiste à unifier l'observation agronomique méticuleuse, l'exigence de la vinification au chai et la rigueur des modèles financiers. C'est en croisant cette réalité de terrain et cette vision macro-économique que nous pérennisons et valorisons vos actifs viticoles face aux défis climatiques et financiers actuels. 
+                Mon travail consiste à unifier l'observation agronomique méticuleuse, l'exigence de la vinification créative au chai et la rigueur des modèles financiers. C'est en croisant cette réalité de terrain et cette vision macro-économique que nous pérennisons et valorisons vos actifs viticoles face aux défis climatiques et financiers actuels. 
               </p>
             </motion.div>
           </div>

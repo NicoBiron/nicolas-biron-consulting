@@ -76,7 +76,7 @@ export default function Navigation() {
               NICOLAS BIRON
             </span>
             <span className="text-[9px] tracking-[0.2em] text-brand-accent uppercase font-sans mt-1">
-              Consulting Vitivinicole
+              Solutions Vitivinicoles
             </span>
           </div>
         </a>

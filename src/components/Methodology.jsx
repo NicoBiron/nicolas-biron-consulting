@@ -27,12 +27,12 @@ export default function Methodology() {
   return (
     <section id="methode" className="py-24 md:py-32 bg-brand-slate border-t border-white/5 relative overflow-hidden">
       
-      {/* IMAGE DE FOND PERSONNALISÉE (pedologie.jpg - Opacité 15%) */}
+      {/* IMAGE DE FOND PERSONNALISÉE (pedologie.jpg - Opacité 25%) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <img
           src="/Images/pedologie.jpg"
           alt="Étude pédologique des sols en arrière-plan"
-          className="w-full h-full object-cover opacity-15"
+          className="w-full h-full object-cover opacity-25"
         />
         {/* Dégradés d'ambiance sombres */}
         <div className="absolute inset-0 bg-gradient-to-b from-brand-slate/40 via-brand-slate/90 to-brand-slate" />

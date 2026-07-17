@@ -179,6 +179,19 @@ export default function AIAgent() {
         SECTION VISUELLE (Masquée complètement à l'impression)
       */}
       <section id="assistant-ia" className="py-24 md:py-32 bg-brand-slate border-t border-white/5 relative overflow-hidden print:hidden">
+        
+        {/* IMAGE DE FOND PERSONNALISÉE (AIAgent.png - Opacité 25%) */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <img
+            src="/Images/AIAgent.png"
+            alt="Technologie et IA viticole en arrière-plan"
+            className="w-full h-full object-cover opacity-25"
+          />
+          {/* Dégradés d'ambiance sombres */}
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-slate/40 via-brand-slate/90 to-brand-slate" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,#121614_95%)]" />
+        </div>
+
         <div className="max-w-4xl mx-auto px-6 relative z-10">
           
           {/* En-tête explicatif de la section */}
